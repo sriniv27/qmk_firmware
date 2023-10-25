@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
   KC_LEAD,LGUI_T(KC_Z),LALT_T(KC_X),LSFT_T(KC_C),LCTL_T(KC_V),LGUI_T(KC_B),  RGUI_T(KC_N),RCTL_T(KC_M),RSFT_T(KC_COMM),RALT_T(KC_DOT), RGUI_T(KC_SLSH),  KC_BSLS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                            LT(2,KC_LCBR),LT(1,KC_SPC),LT(3,KC_LPRN),  LT(3,KC_RPRN),LT(1,KC_ENT), LT(2,KC_RCBR)
+                            LT(2,KC_LBRC),LT(1,KC_SPC),LT(3,KC_LPRN),  LT(3,KC_RPRN),LT(1,KC_ENT), LT(2,KC_RBRC)
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -65,11 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, KC_DEL,
+      _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_WH_U,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CAPS_WORD, _______, KC_BTN1, KC_BTN2, KC_BTN3, XXXXXXX,                      KC_MS_LEFT, KC_MS_DOWN,   KC_MS_UP,KC_MS_RIGHT, XXXXXXX, XXXXXXX,
+      CAPS_WORD, _______, KC_BTN1, KC_BTN2, KC_BTN3, KC_WH_D,                      KC_MS_LEFT, KC_MS_DOWN,   KC_MS_UP,KC_MS_RIGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LBRC, _______,  KC_LT,     KC_GT,  _______, KC_RBRC
+                                          KC_LCBR, _______,  KC_LT,     KC_GT,  _______, KC_RCBR
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -77,10 +77,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       DT_PRNT, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      DT_UP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
+      DT_UP, XXXXXXX, KC_INS, KC_DEL, XXXXXXX, XXXXXXX,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
 
-      DT_DOWN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+      DT_DOWN, XXXXXXX, OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), OSM(MOD_LGUI),                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LCBR, _______, _______,   _______, _______, KC_RCBR
                                       //`--------------------------'  `--------------------------'
@@ -126,9 +126,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
       }
       break;
-    case LT(2,KC_LCBR):
+    case LT(2,KC_LBRC):
       if(record->tap.count && record->event.pressed){
-        tap_code16(KC_LCBR);
+        tap_code16(KC_LBRC);
         return false;
       }
       break;
@@ -138,9 +138,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
       }
       break;
-    case LT(2,KC_RCBR):
+    case LT(2,KC_RBRC):
       if(record->tap.count && record->event.pressed){
-        tap_code16(KC_RCBR);
+        tap_code16(KC_RBRC);
         return false;
       }
       break;
